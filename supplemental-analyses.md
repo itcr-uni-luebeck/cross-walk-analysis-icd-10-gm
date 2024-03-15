@@ -1,58 +1,181 @@
-# Scoping Review for TerminoDiff
+# Reformatted crosswalk-tables between annual ICD-10-versions for cross version data analysis
 
-To get an overview of the literature, we performed a scoping review.
 
-![PRISMA flowchart](assets/prisma-terminodiff.png)
+This document provides further statistical analysis related to the cross-version evaluations of ICD-10.
 
-Our PICOC are:
-- Population = Terminology Tooling
-- Intervention = Differences in resource versions
-- Comparison = GNU `diff`
-- Outcome = Changes made visible and understandable
-- Context = healthcare informatics.
 
-We derived the following search string from the PICOC:
+## Table of Contents
 
-```
-("fhir" OR "ontology" OR "rdf" OR "terminology") AND ("diff" OR "change" OR "difference" OR "version")
-```
+1. [Genral](#1-general)
+2. [Non-automatic transition](#2-non-automatic-transition)
+    * [Forward](#21-forward)
+    * [Backward](#22-backward)
+3. [Comparison of ICD-10 codes with version 2024](#3-comparision-of-icd-10-codes-with-version-2024)
 
-We queried the following sources:
 
-- PubMed
-- Scopus
-- Springer Link
-- other (we added sources that were referenced in other literature to this group)
+## 1. General
+The German Federal Institute for Drugs and Medical Devices (BfArM) publishes so-called crosswalk tables. The crosswalk tables, in the form of text files, contain information on how a code in two subsequent versions behaves, for example:  
+<p align="center">
+<span style="color:#1F77B4"> K20 </span> ; <span style="color:#2CA02C"> K20.0 </span> ; <span style="color:#FF7F0E"> X </span> ; <span style="color:#D62728"> A </span>
+</p>
+<p align="center">
+<span style="color:#1F77B4"> K20 </span> ; <span style="color:#2CA02C"> K20.1 </span> ; <span style="color:#FF7F0E"> X </span> ; <span style="color:#D62728"> X </span> 
+</p>
+<p align="center">
+<span style="color:#1F77B4"> T66 </span> ; <span style="color:#2CA02C"> K20.1 </span> ; <span style="color:#FF7F0E"> X </span> ; <span style="color:#D62728"> X </span>
+</p>
 
-Our inclusion and exclusion criteria are:
+The first two columns show codes from the older version (blue) and the newer version (green). The remaining columns display transition information: from older to newer version (forward, orange) and from newer to older version (backward, red). An automatic transition is expressed by `A` in the tables. Non-automatic transition is represented by an empty entry in the tables, which, in this work, will be represented by `X` to improve readability. In total, 21 ICD-10-GM versions are considered between the years 2004 and 2024.
+Based on the provided [Neo4J database](https://github.com/itcr-uni-luebeck/cross-walk-analysis-icd-10-gm/tree/main/Neo4j%20Database) and ConceptMaps [R4](https://github.com/itcr-uni-luebeck/cross-walk-analysis-icd-10-gm/tree/main/ConceptMap-R4) and [R5](https://github.com/itcr-uni-luebeck/cross-walk-analysis-icd-10-gm/tree/main/ConceptMap-R5) the analysis were carried out.
 
-|Inclusion|Exclusion|
-|-|-|
-|Does the approach consider HL7 FHIR resources?|No free-text available|
-|Does the approach consider terminological artefacts?|The approach does not consider terminological/ontological artefacts|
-|The approach computes a diff|The approach is not from the medical domain|
+## 2. Non-automatic transition
 
-By querying the three sources using the search string, and adding references to the "other" category, we selected 25 studies in total (Scopus 12, Springer Link 4, PubMed 3, other 6), based on their abstracts.
+Here it was analyzed how many codes cannot be automatically transitioned between two successive versions. In addition, five reasons were identified for the non-automatic transitions. These as well as examples and frequencies are also shown.
 
-After abstract selection, we screened the papers using the following screening questions:
+### 2.1. Forward
 
-- Applicability to this work?
-- Does the approach consider the representation and maintenance of terminological/ontological artefacts?
+On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E">0.89 %</font> or 122 codes per crosswalk table cannot be transited automatically.
 
-After screening, we selected the following six works as applicable:
+<img src="images\non-automatic-transiton\2004-2024-forward.png" style="width:60%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
 
-- Hartung, Michael, Anika Groß, and Erhard Rahm. “COnto–Diff: Generation of Complex Evolution Mappings for Life Science Ontologies.” Journal of Biomedical Informatics 46, no. 1 (February 2013): 15–32. https://doi.org/10.1016/j.jbi.2012.04.009.
-- Kirsten, Toralf, Michael Hartung, Anika Groß, and Erhard Rahm. “Efficient Management of Biomedical Ontology Versions.” In Lecture Notes in Computer Science, 574–83. Springer Berlin Heidelberg, 2009. https://doi.org/10.1007/978-3-642-05290-3_71.
-- Klein, Michel, Dieter Fensel, Atanas Kiryakov, and Damyan Ognyanov. “Ontology Versioning and Change Detection on the Web.” In Knowledge Engineering and Knowledge Management: Ontologies and the Semantic Web, 197–212. Springer Berlin Heidelberg, 2002. https://doi.org/10.1007/3-540-45810-7_20.
-- Noy, Natalya Fridman, and Mark A. Musen. “PROMPTDIFF: A Fixed-Point Algorithm for Comparing Ontology Versions.” In Proceedings of the Eighteenth National Conference on Artificial Intelligence and Fourteenth Conference on Innovative Applications of Artificial Intelligence, July 28 - August 1, 2002, Edmonton, Alberta, Canada, edited by Rina Dechter, Michael J. Kearns, and Richard S. Sutton, 744–50. AAAI Press / The MIT Press, 2002. http://www.aaai.org/Library/AAAI/2002/aaai02-112.php.
-- Ochs, Christopher, Yehoshua Perl, James Geller, Melissa Haendel, Matthew Brush, Sivaram Arabandi, and Samson Tu. “Summarizing and Visualizing Structural Changes during the Evolution of Biomedical Ontologies Using a Diff Abstraction Network.” Journal of Biomedical Informatics 56 (August 2015): 127–44. https://doi.org/10.1016/j.jbi.2015.05.018.
-- Pernisch, Romana, Mirko Serbak, Daniele Dell’Aglio, and Abraham Bernstein. “ChImp: Visualizing Ontology Changes and TheirImpact in Protégé.” Visualization and Interaction for Ontologies and Linked Data (VOILA), 2020. http://ceur-ws.org/Vol-2778/paper5.pdf.
-- Swoboda, Oliver. “Realisierung Des COnto-Diff Algorithmus Innerhalb Eines Protégé-Plugins.” Bachelor’s Thesis, Universität Leipzig, Institut für Informatik, Abteilung Datenbanken, 2015. https://nbn-resolving.org/urn:nbn:de:bsz:15-qucosa2-171988.
+The following five causes for a non-automatic transition were identified:
+<table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
+    <tr><th> <p style="margin-bottom:-5px">Cause</p> </th><th> <p style="margin-bottom:-5px">Example</p> </th><th> <p style="margin-bottom:-5px">Frequency</p> </th></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Refinement</p> </td><td> <p style="margin-bottom:-5px">K20 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">48.48 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U69.75</p> </td><td> <p align="right" style="margin-bottom:-5px">12.50 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U11.0 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">0.97 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.88 → T86.84</p> </td><td> <p align="right" style="margin-bottom:-5px">33.51 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">T66 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">4.54 %</p> </td></tr>
+</table>
 
-We then extracted the following data from the referenced literature:
+The causes and their frequencies per crosswalk table are as follows:
 
-- What is the underlying terminological model? (select from FHIR, RDF/OWL, other)
-- Is the result visualized in some fashion? (Boolean)
-- Is a graph being generated? (Boolean)
-- Mapping from one version to another? (Boolean)
-- Comments (Free-text)
+<img src="images\non-automatic-transiton\2004-2024-causes-forward.png" style="width:100%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+
+Two further examples of reorganization special (with chapter change):
+<table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
+    <tr><th> <p style="margin-bottom:-5px">Version</p> </th><th> <p style="margin-bottom:-5px">Code old</p> </th><th> <p style="margin-bottom:-5px">Name old</p> </th><th> <p style="margin-bottom:-5px">Code new</p> </th><th> <p style="margin-bottom:-5px">Name new</p> </th></tr>
+    <tr><td rowspan="2"> <p style="margin-bottom:-5px">2022-2023</p> </td><td rowspan="2"> <p style="margin-bottom:-5px">K20</p> </td><td rowspan="2"> <p style="margin-bottom:-5px">Esophagitis</p> </td><td> <p style="margin-bottom:-5px">K20.1</p> </td><td> <p style="margin-bottom:-5px">Radiogenic esophagitis</p> </td></tr>
+    <tr><td><p style="margin-bottom:-5px"><font color="#FF7F0E">T66</font></p></td><td> <p style="margin-bottom:-5px">Radiation sickness, unspecified</p> </td></tr>
+    <tr><td rowspan="4"> <p style="margin-bottom:-5px">2016-2017</p> </td><td rowspan="4"> <p style="margin-bottom:-5px">R60.9</p> </td><td rowspan="4"> <p style="margin-bottom:-5px">Oedema, unspecified</p> </td><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">E88.20</font></p> </td><td> <p style="margin-bottom:-5px">Lipoedema, stage I</p> </td></tr>
+    <tr><td><p style="margin-bottom:-5px"><font color="#FF7F0E">E88.21</font></p></td><td> <p style="margin-bottom:-5px">Lipoedema, stage II</p> </td></tr>
+    <tr><td><p style="margin-bottom:-5px"><font color="#FF7F0E">E88.22</font></p></td><td> <p style="margin-bottom:-5px">Lipoedema, stage III</p> </td></tr>
+    <tr><td><p style="margin-bottom:-5px"><font color="#FF7F0E">E88.28</font></p></td><td> <p style="margin-bottom:-5px">Other and unspecified lipoedema</p> </td></tr>
+</table>
+
+### 2.2. Backward
+
+On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E">0.48 %</font> or 66 codes per crosswalk table cannot be transited automatically.
+
+<img src="images\non-automatic-transiton\2004-2024-backward.png" style="width:60%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+
+The following five causes for a non-automatic transition were identified:
+<table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
+    <tr><th> <p style="margin-bottom:-5px">Cause</p> </th><th> <p style="margin-bottom:-5px">Example</p> </th><th> <p style="margin-bottom:-5px">Frequency</p> </th></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Coarsening</p> </td><td> <p style="margin-bottom:-5px">K20.1 → K20</p> </td><td> <p align="right" style="margin-bottom:-5px">6.46 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U11.0</p> </td><td> <p align="right" style="margin-bottom:-5px">4.11 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U69.75 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">36.73 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.84 → T86.88 </p> </td><td> <p align="right" style="margin-bottom:-5px">46.31 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">K20.1 → T66</p> </td><td> <p align="right" style="margin-bottom:-5px">6.36 %</p> </td></tr>
+</table>
+
+The causes and their frequencies per crosswalk table are as follows:
+
+<img src="images\non-automatic-transiton\2004-2024-causes-backward.png" style="width:100%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+
+Two further examples of reorganization special (with chapter change):
+<table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
+    <tr>
+        <th> <p style="margin-bottom:-5px">Version</p> </th>
+        <th> <p style="margin-bottom:-5px">Code new</p> </th>
+        <th> <p style="margin-bottom:-5px">Name new</p> </th>
+        <th> <p style="margin-bottom:-5px">Code old</p> </th>
+        <th> <p style="margin-bottom:-5px">Name old</p> </th>
+    </tr>
+    <tr>
+        <td rowspan="2"> <p style="margin-bottom:-5px">2023-2022</p> </td>
+        <td rowspan="2"> <p style="margin-bottom:-5px">K20.1</p> </td>
+        <td rowspan="2"> <p style="margin-bottom:-5px">Radiogenic esophagitis</p> </td>
+        <td> <p style="margin-bottom:-5px">K20</p> </td><td> <p style="margin-bottom:-5px">Esophagitis</p></td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px"><font color="#FF7F0E">T66</font></p> </td><td> <p style="margin-bottom:-5px">Radiogenic esophagitis</p></td>
+    </tr>
+    <tr>
+        <td rowspan="5"> <p style="margin-bottom:-5px">2019-2018</p> </td>
+        <td rowspan="5"> <p style="margin-bottom:-5px">G90.70</p> </td>
+        <td rowspan="5"> <p style="margin-bottom:-5px">Complex regional pain <br>syndrome of upper limb, other <br>and unspecified type</p> </td>
+        <td> <p style="margin-bottom:-5px"><font color="#FF7F0E">M79.60</font></p> </td>
+        <td> <p style="margin-bottom:-5px">Pain in limb Multiple sites</p> </td>
+    </tr>
+    <tr>
+        <td><p style="margin-bottom:-5px"><font color="#FF7F0E">M79.61</font></p></td>
+        <td> <p style="margin-bottom:-5px">Pain in limb Shoulder region</p> </td>
+    </tr>
+    <tr>
+        <td><p style="margin-bottom:-5px"><font color="#FF7F0E">M79.62</font></p></td>
+        <td> <p style="margin-bottom:-5px">Pain in limb Upper arm</p> </td>
+    </tr>
+    <tr>
+        <td><p style="margin-bottom:-5px"><font color="#FF7F0E">M79.63</font></p></td>
+        <td> <p style="margin-bottom:-5px">Pain in limb Forearm</p> </td>
+    </tr>
+    <tr>
+        <td><p style="margin-bottom:-5px"><font color="#FF7F0E">M79.64</font></p></td>
+        <td> <p style="margin-bottom:-5px">Pain in limb Hand</p> </td>
+    </tr>
+</table>
+
+## 3. Comparison of ICD-10 codes with version 2024
+
+In the following section, the ICD-10 codes of the previous versions will be compared with those of the version 2024. This involves checking whether the codes of individual annual versions are still terminating in the version of 2024 or whether they still exist.
+In summary, the analysis yielded the following average results for the versions considered from 2004 to 2023:
+* Still terminating in version 2024: <font color="#FF7F0E">98.48 %</font> (13,279 codes)
+* No longer terminating in version 2024: <font color="#FF7F0E">0.89 %</font> (119 codes)
+* No longer existing codes in version 2024: <font color="#FF7F0E">0.63 %</font> (84 codes).
+
+The results for the individual annual versions are as follows:
+
+<img src="images\comparison-of-icd-10-codes-with-version-2024\2004-2024-comparision-all-versions.png" style="width:100%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+
+Two examples of codes of version 2023 that can no longer terminating in version 2024:
+
+<table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
+    <tr>
+        <th> <p style="margin-bottom:-5px">Code (2023)</p> </th>
+        <th> <p style="margin-bottom:-5px">Name (2023)</p> </th>
+        <th> <p style="margin-bottom:-5px">Code (2024)</p> </th>
+        <th> <p style="margin-bottom:-5px">Name (2024)</p> </th>
+         <th> <p style="margin-bottom:-5px">Explanation</p> </th>
+    </tr>
+    <tr>
+        <td rowspan="2"> <p style="margin-bottom:-5px">B18.8</p> </td>
+        <td rowspan="2"> <p style="margin-bottom:-5px">Other chronic viral <br>hepatitis</p> </td>
+        <td> <p style="margin-bottom:-5px">B18.8<font color="#FF7F0E">0</font></p> </td>
+        <td> <p style="margin-bottom:-5px">Chronic viral hepatitis E</p></td>
+        <td rowspan="2"> <p style="margin-bottom:-5px">The code in the 2024 <br>version has been <br>refined by adding <br>a 5th digit.</p> </td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px">B18.8<font color="#FF7F0E">8</font></p> </td><td> <p style="margin-bottom:-5px">Other chronic viral hepatitis</p></td>
+    </tr>
+    <tr>
+        <td rowspan="6"> <p style="margin-bottom:-5px">S02.4</p> </td>
+        <td rowspan="6"> <p style="margin-bottom:-5px">Fracture of malar <br>and maxillary bones</p> </td>
+        <td> <p style="margin-bottom:-5px">S02.4<font color="#FF7F0E">0</font></p> </td>
+        <td> <p style="margin-bottom:-5px">Fracture of malar, maxillary and zygoma bones, unspecified</p></td>
+        <td rowspan="6"> <p style="margin-bottom:-5px">The code in the 2024 <br>version has been <br>refined by adding <br>a 5th digit.</p> </td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px">S02.4<font color="#FF7F0E">2</font></p> </td><td> <p style="margin-bottom:-5px">Fracture of alveolus of maxilla</p></td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px">S02.4<font color="#FF7F0E">3</font></p> </td><td> <p style="margin-bottom:-5px">Unspecified severe protein-energy malnutrition</p></td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px">S02.4<font color="#FF7F0E">8</font></p> </td><td> <p style="margin-bottom:-5px">Malignant neoplasm: peritoneum, unspecified</p></td>
+    </tr>
+    <tr>
+        <td> <p style="margin-bottom:-5px">S02.4<font color="#FF7F0E">9</font></p> </td><td> <p style="margin-bottom:-5px">Fracture of the zygomatic bone and maxilla: multiple parts</p></td>
+    </tr>
+</table>
+
