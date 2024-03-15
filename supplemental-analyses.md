@@ -7,9 +7,11 @@ This document provides further statistical analysis related to the cross-version
 ## Table of Contents
 
 1. [Genral](#1-general)
+
 2. [Non-automatic transition](#2-non-automatic-transition)
     * [Forward](#21-forward)
     * [Backward](#22-backward)
+
 3. [Comparison of ICD-10 codes with version 2024](#3-comparision-of-icd-10-codes-with-version-2024)
 
 
@@ -36,7 +38,7 @@ Here it was analyzed how many codes cannot be automatically transitioned between
 
 On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E">0.89 %</font> or 122 codes per crosswalk table cannot be transited automatically.
 
-<img src="images\non-automatic-transiton\2004-2024-forward.png" style="width:60%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+<img src="images\non-automatic-transiton\2004-2024-forward.png" style="width:80%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
 
 The following five causes for a non-automatic transition were identified:
 <table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
@@ -67,7 +69,7 @@ Two further examples of reorganization special (with chapter change):
 
 On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E">0.48 %</font> or 66 codes per crosswalk table cannot be transited automatically.
 
-<img src="images\non-automatic-transiton\2004-2024-backward.png" style="width:60%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
+<img src="images\non-automatic-transiton\2004-2024-backward.png" style="width:80%; display: block; margin-left: auto; margin-right: auto; margin-bottom: 30px"/>
 
 The following five causes for a non-automatic transition were identified:
 <table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
