@@ -1,6 +1,6 @@
 # Supplemental Analyses for ICD-10-GM Crosswalks
 
-[![View Site - on GitHub Pages](https://img.shields.io/badge/View_Site-on_GitHub_Pages-blueviolet?logo=github)]([https://itcr-uni-luebeck.github.io/cross-walk-analysis-icd-10-gm/])
+[![View Site - on GitHub Pages](https://img.shields.io/badge/View_Site-on_GitHub_Pages-blueviolet?logo=github)](https://itcr-uni-luebeck.github.io/cross-walk-analysis-icd-10-gm/)
 
 This document provides further statistical analysis related to the cross-version evaluations of ICD-10.
 
