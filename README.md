@@ -43,11 +43,11 @@ On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E"
 The following five causes for a non-automatic transition were identified:
 <table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
     <tr><th> <p style="margin-bottom:-5px">Cause</p> </th><th> <p style="margin-bottom:-5px">Example</p> </th><th> <p style="margin-bottom:-5px">Frequency</p> </th></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Refinement</p> </td><td> <p style="margin-bottom:-5px">K20 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">48.48 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U69.75</p> </td><td> <p align="right" style="margin-bottom:-5px">12.50 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U11.0 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">0.97 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.88 → T86.84</p> </td><td> <p align="right" style="margin-bottom:-5px">33.51 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">T66 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">4.54 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Refinement/Coarsening</p> </td><td> <p style="margin-bottom:-5px">K20 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">30.30 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U69.75</p> </td><td> <p align="right" style="margin-bottom:-5px">20.48 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U11.0 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">1.85 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.88 → T86.84</p> </td><td> <p align="right" style="margin-bottom:-5px">41.56 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">T66 → K20.1</p> </td><td> <p align="right" style="margin-bottom:-5px">3.82 %</p> </td></tr>
 </table>
 
 The causes and their frequencies per crosswalk table are as follows:
@@ -74,11 +74,11 @@ On average across the ICD-10-GM versions of 2004 and 2024, <font color="#FF7F0E"
 The following five causes for a non-automatic transition were identified:
 <table style="margin-left: auto; margin-right: auto;  margin-bottom: 30px">
     <tr><th> <p style="margin-bottom:-5px">Cause</p> </th><th> <p style="margin-bottom:-5px">Example</p> </th><th> <p style="margin-bottom:-5px">Frequency</p> </th></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Coarsening</p> </td><td> <p style="margin-bottom:-5px">K20.1 → K20</p> </td><td> <p align="right" style="margin-bottom:-5px">6.46 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U11.0</p> </td><td> <p align="right" style="margin-bottom:-5px">4.11 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U69.75 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">36.73 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.84 → T86.88 </p> </td><td> <p align="right" style="margin-bottom:-5px">46.31 %</p> </td></tr>
-    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">K20.1 → T66</p> </td><td> <p align="right" style="margin-bottom:-5px">6.36 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#1F77B4">&#9632;</font> Refinement/Coarsening</p> </td><td> <p style="margin-bottom:-5px">K20.1 → K20</p> </td><td> <p align="right" style="margin-bottom:-5px">3.96 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#FF7F0E">&#9632;</font> New Codes</p> </td><td> <p style="margin-bottom:-5px">UNDEF → U11.0</p> </td><td> <p align="right" style="margin-bottom:-5px">3.13 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#2CA02C">&#9632;</font> Deleted Codes</p> </td><td> <p style="margin-bottom:-5px">U69.75 → UNDEF</p> </td><td> <p align="right" style="margin-bottom:-5px">37.80 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#9467BD">&#9632;</font> Reorganization</p> </td><td> <p style="margin-bottom:-5px">T86.84 → T86.88 </p> </td><td> <p align="right" style="margin-bottom:-5px">49.09 %</p> </td></tr>
+    <tr><td> <p style="margin-bottom:-5px"><font color="#D62728">&#9632;</font> Reorganization with chapter change</p> </td><td> <p style="margin-bottom:-5px">K20.1 → T66</p> </td><td> <p align="right" style="margin-bottom:-5px">6.02 %</p> </td></tr>
 </table>
 
 The causes and their frequencies per crosswalk table are as follows:
